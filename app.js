@@ -99,7 +99,7 @@ addmorelistform.addEventListener("submit" , (event) =>{
             })
 
 
-    function addnewcard (text , textdiv){                   
+    function addnewcard (text){                   
         let addedcards = document.createElement("div")
         addedcards.className= "added-card"
         addedcards.setAttribute('draggable' , 'true')
@@ -110,9 +110,9 @@ addmorelistform.addEventListener("submit" , (event) =>{
         del.className = 'del-btn'
         del.addEventListener("click" , () => {
             addedcards.remove()
-            saveCardsToLocalStorage(); 
+            // saveCardsToLocalStorage(); 
         })
-        saveCardsToLocalStorage();
+        // saveCardsToLocalStorage();
         
         addedcards.appendChild(del)
         textdiv.appendChild(addedcards)
@@ -149,8 +149,8 @@ document.addEventListener("click", (event) => {
 });
 
 
-const cards = JSON.parse(localStorage.getItem("cards")) || [];
-cards.forEach(cardText => addnewcard(cardText, textdiv));
+// const cards = JSON.parse(localStorage.getItem("cards")) || [];
+// cards.forEach(cardText => addnewcard(cardText, textdiv));
 
     }
     
@@ -168,27 +168,6 @@ cards.forEach(cardText => addnewcard(cardText, textdiv));
 
     
     
-    function saveCardsToLocalStorage() {
-    const cards = [];
-    document.querySelectorAll(".added-card").forEach(card => {
-        cards.push(card.firstChild.textContent);
-    });
-    localStorage.setItem("cards", JSON.stringify(cards));
-}
-
-function loadCardsFromLocalStorage() {
-    const cards = JSON.parse(localStorage.getItem("cards"));
-    if (cards) {
-        cards.forEach(text => {
-            const textdiv = document.querySelector("#created-cards");
-            addnewcard(text, textdiv);
-        });
-    }
-}
-
-    document.addEventListener("DOMContentLoaded", () => {
-    loadCardsFromLocalStorage();
-});
 
 
 
