@@ -49,10 +49,12 @@ function storecard(text){
 
 function loadcards(){
     let cards = JSON.parse(localStorage.getItem("cards")) || []
+    if(cards){
     cards.forEach((text) => {
         addnewcard(text)
         
-    });
+    })
+    }  
 }
 
 cardinputform.addEventListener("submit" , (event) =>{
