@@ -28,6 +28,36 @@ document.addEventListener("click", (event) => {
     }
 });
 
+<<<<<<< HEAD
+=======
+function addnewcard(text){
+    let addedcards = document.createElement("div")
+    addedcards.id= "added-card"
+    addedcards.setAttribute('draggable' , 'true')
+    addedcards.innerHTML = text
+
+    createdcard.appendChild(addedcards)
+    storecard(text)
+}
+
+function storecard(text){
+    let cards = JSON.parse(localStorage.getItem("cards")) || []
+    cards.push(text)
+    localStorage.setItem('cards' , JSON.stringify(cards))
+}
+
+
+
+function loadcards(){
+    let cards = JSON.parse(localStorage.getItem("cards")) || []
+    if(cards){
+    cards.forEach((text) => {
+        addnewcard(text)
+        
+    })
+    }  
+}
+>>>>>>> 1fff6cf94ebac48c891d6ad03e4bbefb9a5d18c1
 
 cardinputform.addEventListener("submit" , (event) =>{
     event.preventDefault()
@@ -80,6 +110,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     
 
 
+<<<<<<< HEAD
     // from this way cards are incrasing ! idont know why this way is not work. 
     
     // function saveCard(text) {
@@ -97,3 +128,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     //     loadCards(); 
     // });
         
+=======
+    document.addEventListener("DOMContentLoaded" , () =>{
+        loadcards()
+    })
+>>>>>>> 1fff6cf94ebac48c891d6ad03e4bbefb9a5d18c1
